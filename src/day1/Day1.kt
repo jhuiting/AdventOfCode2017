@@ -9,7 +9,7 @@ class CaptchaSolver {
                     .filter { it != 0 }
                     .map {
                         when {
-                            it == input.size - 1 && input[0] == input[it]  -> input[it]
+                            it == input.size - 1 && input[0] == input[it] -> input[it]
                             input[it - 1] == input[it] -> input[it]
                             else -> 0
                         }
