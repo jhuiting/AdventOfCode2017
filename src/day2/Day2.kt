@@ -15,16 +15,11 @@ class SpreadSheetSolver {
                 .flatMap {
                     // Check modulo for each "high" number and calculate division result
                     it[1].flatMap { highNumber ->
-                        it[0].map { lowNumber -> when {
-                                highNumber % lowNumber == 0 -> highNumber / lowNumber
-                                else -> 0
-                            }
-                        }
+                        it[0].map { lowNumber -> if (highNumber % lowNumber == 0) highNumber / lowNumber else 0 }
                     }
                 }.sum()
 
             println("Solution spreadsheet part 2: $checkSumInput")
-
         }
     }
 }

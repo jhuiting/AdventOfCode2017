@@ -8,9 +8,9 @@ class CaptchaSolver {
             val totalCount = input.indices
                     .filter { it != 0 }
                     .map {
-                        when {
-                            it == input.size - 1 && input[0] == input[it] -> input[it]
-                            input[it - 1] == input[it] -> input[it]
+                        index -> when {
+                            index == input.size - 1 && input[0] == input[index] -> input[index]
+                            input[index - 1] == input[index] -> input[index]
                             else -> 0
                         }
                     }
@@ -22,12 +22,7 @@ class CaptchaSolver {
         fun solvePart2(input: List<Int>) {
             val halfListSize = input.size / 2
             val totalCount = input.indices
-                    .map {
-                        when {
-                            it < halfListSize && input[it] == input[it + halfListSize] -> input[it] + input[it + halfListSize]
-                            else -> 0
-                        }
-                    }
+                    .map { index -> if (index < halfListSize && input[index] == input[index + halfListSize]) input[index] + input[index + halfListSize] else 0 }
                     .sum()
 
             println("Solution captcha part 2: $totalCount")
